@@ -24,6 +24,7 @@ hs_err_pid*
 kamil_stachowicz/Kamil_Stachowicz_UML1.vpp.bak*
 
 # Intellij files
+target/*
 .idea
 
 target
