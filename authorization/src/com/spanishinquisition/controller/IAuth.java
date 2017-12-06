@@ -7,7 +7,7 @@ import com.spanishinquisition.functions.Token;
  */
 public interface IAuth {
 
-    Token login(String login, String password);
+    String login(String login, String password);
     boolean authorize(Token token);
 
 }
