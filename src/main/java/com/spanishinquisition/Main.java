@@ -1,12 +1,11 @@
 package com.spanishinquisition;
 
-import com.spanishinquisition.functions.Token;
-import com.spanishinquisition.implementation.IAuth;
+import com.spanishinquisition.implementation.IAuthImpl;
 
 public class Main {
 
     public static void main(String[] args) {
-        IAuth auth = new IAuth();
+        IAuthImpl auth = new IAuthImpl();
 
         System.out.println(auth.login("staho", "fadada"));
 
