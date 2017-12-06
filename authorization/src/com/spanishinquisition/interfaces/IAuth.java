@@ -5,7 +5,7 @@ package com.spanishinquisition.interfaces;
  */
 public interface IAuth {
 
-    String login(String login, String password);
+    String login(String username, String password);
     boolean authorize(String token);
 
 }
