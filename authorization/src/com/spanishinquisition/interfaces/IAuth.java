@@ -1,6 +1,4 @@
-package com.spanishinquisition.controller;
-
-import com.spanishinquisition.functions.Token;
+package com.spanishinquisition.interfaces;
 
 /**
  * Created by madrimas on 06.12.2017.
