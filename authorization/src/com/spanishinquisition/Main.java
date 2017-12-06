@@ -1,4 +1,4 @@
-package com.spaininquisition;
+package com.spanishinquisition;
 
 public class Main {
 
