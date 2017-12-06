@@ -8,4 +8,5 @@ public class Main {
         Token token = new Token("Lala", 12, 4);
         System.out.println(token.asJson());
     }
+
 }
