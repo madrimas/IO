@@ -8,6 +8,6 @@ import com.spanishinquisition.functions.Token;
 public interface IAuth {
 
     String login(String login, String password);
-    boolean authorize(Token token);
+    boolean authorize(String token);
 
 }
