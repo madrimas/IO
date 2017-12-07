@@ -2,7 +2,7 @@ package com.spanishinquisition.implementation;
 
 import com.spanishinquisition.functions.Token;
 
-public class IAuthImpl implements com.spanishinquisition.interfaces.IAuth{
+public class AuthImpl implements com.spanishinquisition.interfaces.IAuth{
 
     @Override
     public String login(String username, String password){
