@@ -1,4 +1,4 @@
 package com.spanishinquisition.functions;
 
-public class GetId {
+class GetId {
 }
