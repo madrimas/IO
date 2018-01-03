@@ -1,4 +1,5 @@
 package com.spanishinquisition.functions;
+
 /**
  * Created by madrimas on 06.12.2017.
  */

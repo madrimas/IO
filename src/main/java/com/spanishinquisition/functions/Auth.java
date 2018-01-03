@@ -35,6 +35,8 @@ class Auth implements IAuth {
     Token getToken(int id) {
         return tokenList.get(id);
     }
+
+
     @Override
      public String login(String username, String password){
         //first at all check if user is in database
@@ -49,9 +51,9 @@ class Auth implements IAuth {
                         .putString(password, Charsets.UTF_8)
                         .hash();
 
-//                if(hc.toString().equals(user.getPassword())) {
-                //if all passes, making the token based on privileges of user
+                //if(hc.toString().equals(user.getPassword())) {
                 if(password.equals(user.getPassword())) {
+                    //if all passes, making the token based on privileges of user
                     int id = user.getUserID();
                     int role = user.getPermissionLevel();
                     TokenFactory tokenFactory = new TokenFactory();
@@ -68,8 +70,10 @@ class Auth implements IAuth {
 
         return null;
     }
+
+
     @Override
-  public boolean authorize(String token){
+    public boolean authorize(String token){
         //check in cache if token is active
         //if it is, return true
 
