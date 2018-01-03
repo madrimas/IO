@@ -1,6 +1,6 @@
 package com.spanishinquisition.functions;
 
-import static com.spanishinquisition.functions.Authorize.tokenList;
+import static com.spanishinquisition.functions.Auth.tokenList;
 
 /**
  * Created by madrimas on 13.12.2017.

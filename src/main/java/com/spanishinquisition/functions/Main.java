@@ -1,32 +1,29 @@
 package com.spanishinquisition.functions;
 
 
-public class Main implements IAuth{
+public class Main{
 
     public static void main(String[] args) {
 
-        IAuth iAuth = new IAuth() {};
-        Authorize authorize = new Authorize();
+       // IAuth iAuth = new IAuth() {};
+        Auth auth = new Auth();
 
-        String token = iAuth.login("madrimas", "wolololo");
-        System.out.println(token);
-        token = iAuth.login("elo", "wolololo");
-        System.out.println(token);
-        token = iAuth.login("mordo", "wolololo");
-        System.out.println(token);
-        token = iAuth.login("morenka", "wolololo");
-        System.out.println(token);
-        token = iAuth.login("root", "password");
+
+       //String token = auth.login("root", "password");
+       // System.out.println(token);
+
+        String token = auth.login("user1", "password");
         System.out.println(token);
 
-        if(iAuth.authorize(token)) {
+
+        if(auth.authorize(token)) {
             System.out.println("Access granted!");
         }
         else
             System.out.println("Access denied!");
 
 
-        for (Token x:Authorize.tokenList) {
+        for (Token x: Auth.tokenList) {
             System.out.println(x.asJson());
         }
 
