@@ -3,7 +3,7 @@ package com.spanishinquisition.functions;
 import java.util.ArrayList;
 import java.util.List;
 
-class Authorize {
+class Authorize  {
 
     static List<Token> tokenList = new ArrayList<>();
 

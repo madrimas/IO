@@ -1,6 +1,10 @@
 package com.spanishinquisition.functions;
 
+import com.google.gson.Gson;
+import usermanagement.User;
+
 import java.util.Random; //only for test
+
 
 /**
  * Created by madrimas on 06.12.2017.
@@ -11,6 +15,8 @@ public interface IAuth {
         //first at all check if user is in database
         //then check password
         //if all passes, making the token based on privileges of user
+
+        
 
         Random random = new Random(); //only for test
         int id = random.nextInt(); //get from data storage
@@ -26,6 +32,13 @@ public interface IAuth {
         //check in cache if token is active
         //if it is, return true
 
-        return true;
+
+        for(Token tkn : Authorize.tokenList) {
+            if (tkn.asJson().equals(token)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
