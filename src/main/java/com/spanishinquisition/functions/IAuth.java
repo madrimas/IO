@@ -16,7 +16,7 @@ public interface IAuth {
         //then check password
         //if all passes, making the token based on privileges of user
 
-        
+
 
         Random random = new Random(); //only for test
         int id = random.nextInt(); //get from data storage
