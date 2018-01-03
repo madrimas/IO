@@ -16,16 +16,18 @@ public class Main implements IAuth{
         System.out.println(token);
         token = iAuth.login("morenka", "wolololo");
         System.out.println(token);
-        token = iAuth.login("ryuchanie", "wolololo");
+        token = iAuth.login("root", "password");
         System.out.println(token);
+
         if(iAuth.authorize(token)) {
             System.out.println("Access granted!");
         }
         else
             System.out.println("Access denied!");
 
-        for (Token x:Authorize.tokenList
-             ) {System.out.println(x.asJson());
+        
+        for (Token x:Authorize.tokenList) {
+            System.out.println(x.asJson());
         }
 
     }
