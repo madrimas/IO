@@ -32,7 +32,8 @@ public interface IAuth {
                         .putString(password, Charsets.UTF_8)
                         .hash();
 
-                if(hc.toString().equals(user.getPassword())) {
+                if(hc.toString().equals(user.getPassword())) { //if hashes match
+                    //if(password.equals(user.getPassword())) {
                     //if all passes, making the token based on privileges of user
                     int id = user.getUserID();
                     int role = user.getPermissionLevel();
