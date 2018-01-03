@@ -51,7 +51,7 @@ class Token {
         return gson.toJson(this);
     }
 
-    public String getUsername() {
+    private String getUsername() {
         return username;
     }
 

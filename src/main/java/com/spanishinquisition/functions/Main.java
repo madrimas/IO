@@ -25,7 +25,7 @@ public class Main implements IAuth{
         else
             System.out.println("Access denied!");
 
-        
+
         for (Token x:Authorize.tokenList) {
             System.out.println(x.asJson());
         }
