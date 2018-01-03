@@ -4,14 +4,9 @@ import com.google.common.base.Charsets;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
-import com.google.gson.Gson;
-import usermanagement.IUserData;
-import usermanagement.IUserManagement;
 import usermanagement.User;
 import usermanagement.UserManagement;
 
-import java.util.List;
-import java.util.Random; //only for test
 
 
 /**
