@@ -9,6 +9,7 @@ import java.util.List;
 public class Main{
 
     public static void main(String[] args) {
+
         UserManagement ud = UserManagement.getInstance();
         List<User> userList = ud.getUserList();
 
@@ -19,10 +20,16 @@ public class Main{
         System.out.println("\n");
 
 
-        Auth auth = new Auth();
+        Auth auth = Auth.getInstance();
 
         String token = auth.login("user1", "password");
-        System.out.println(token);
+        System.out.println("Token: " + token + "\n");
+        token = auth.login("user2", "dhjashdk");
+        System.out.println("Token: " + token + "\n");
+        token = auth.login("user2137", "dhjashdk");
+        System.out.println("Token: " + token + "\n");
+        token = auth.login("user3", "password");
+        System.out.println("Token: " + token + "\n");
 
 
         if(auth.authorize(token)) {
