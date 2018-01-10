@@ -57,7 +57,6 @@ public class Auth implements IAuth {
         for(User user : ud.getUserList()) {
             if(user.getUsername().equals(username)) {
                 //then check password
-                System.out.println("User found.");
                 HashFunction hf = Hashing.sha256();
                 HashCode hc = hf.newHasher()
                         .putString(password, Charsets.UTF_8)
