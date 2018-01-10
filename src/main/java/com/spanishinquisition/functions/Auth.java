@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-class Auth implements IAuth {
+public class Auth implements IAuth {
 
     static List<Token> tokenList = new ArrayList<>();
 
