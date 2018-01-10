@@ -21,7 +21,7 @@ public class Auth implements IAuth {
         tokenList = getTokenList();
     }
 
-    List<Token> getTokenList(){
+    public List<Token> getTokenList(){
         return tokenList;
     }
 
