@@ -8,6 +8,7 @@ import usermanagement.User;
 import usermanagement.UserManagement;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 class Auth implements IAuth {
@@ -79,10 +80,23 @@ class Auth implements IAuth {
 
         for(Token tkn : Auth.tokenList) {
             if (tkn.asJson().equals(token)) {
-                return true;
+
+                if (getDateDiff(tkn.getDate(), new Date()) < 3600) {
+
+                    return true;
+                } else {
+                    Auth.tokenList.remove(tkn);
+                    return false;
+                }
+
             }
         }
 
         return false;
+    }
+
+    private long getDateDiff(Date then, Date now){
+        long seconds = (now.getTime() - then.getTime())/1000;
+        return seconds;
     }
 }

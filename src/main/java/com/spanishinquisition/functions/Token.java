@@ -13,6 +13,8 @@ class Token {
     private int userId;
     private int role;
     private String hashCode;
+    private transient Date date;
+    private transient long lifeSpan;
 
     protected Token(String json){
         Gson gson = new Gson();
@@ -27,7 +29,7 @@ class Token {
         this.username = username;
         this.userId = userId;
         this.role = role;
-        Date date = new Date();
+        this.date = new Date();
         HashFunction hf = Hashing.sha256();
         HashCode hc = hf.newHasher()
                 .putInt(userId)
@@ -73,5 +75,9 @@ class Token {
 
     protected void setRole(int role) {
         this.role = role;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

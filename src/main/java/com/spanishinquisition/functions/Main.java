@@ -8,7 +8,8 @@ import java.util.List;
 
 public class Main{
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
         UserManagement ud = UserManagement.getInstance();
         List<User> userList = ud.getUserList();
 
@@ -22,9 +23,22 @@ public class Main{
         Auth auth = new Auth();
 
         String token = auth.login("user1", "password");
+
+        System.out.println("Przed spaniem");
+
         System.out.println(token);
 
+        if(auth.authorize(token)) {
+            System.out.println("Access granted!");
+        }
+        else
+            System.out.println("Access denied!");
 
+
+        System.out.println("Spanie 5s");
+        Thread.sleep(5000);
+
+        System.out.println("Po spaniu");
         if(auth.authorize(token)) {
             System.out.println("Access granted!");
         }
