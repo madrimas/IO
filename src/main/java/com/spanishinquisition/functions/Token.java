@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 import java.util.Date;
 
-class Token {
+public class Token {
     private String username;
     private int userId;
     private int role;
