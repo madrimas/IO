@@ -15,7 +15,9 @@ class Auth implements IAuth {
 
     static List<Token> tokenList = new ArrayList<>();
 
-    Auth(){
+    private static Auth auth;
+
+    private Auth(){
         tokenList = getTokenList();
     }
 
@@ -33,6 +35,15 @@ class Auth implements IAuth {
         return id;
     }
 
+    public static Auth getInstance() {
+        if(Auth.auth == null) {
+            auth = new Auth();
+            return auth;
+        }
+
+        return auth;
+    }
+
     Token getToken(int id) {
         return tokenList.get(id);
     }
@@ -46,7 +57,7 @@ class Auth implements IAuth {
         for(User user : ud.getUserList()) {
             if(user.getUsername().equals(username)) {
                 //then check password
-                System.out.println("User found");
+                System.out.println("User found.");
                 HashFunction hf = Hashing.sha256();
                 HashCode hc = hf.newHasher()
                         .putString(password, Charsets.UTF_8)
@@ -64,10 +75,12 @@ class Auth implements IAuth {
 
                 } else {
                     System.out.println("Incorrect password.");
-                    break;
+                    return null;
                 }
             }
         }
+
+        System.out.println("User not found.");
 
         return null;
     }

@@ -20,7 +20,7 @@ public class Main{
         System.out.println("\n");
 
 
-        Auth auth = new Auth();
+        Auth auth = Auth.getInstance();
 
         String token = auth.login("user1", "password");
 
