@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 import java.util.Date;
 
-public class Token {
+class Token {
     private String username;
     private int userId;
     private int role;
@@ -16,7 +16,7 @@ public class Token {
     private transient Date date;
     private transient long lifeSpan;
 
-    protected Token(String json){
+    protected Token(String json) {
         Gson gson = new Gson();
         Token token = gson.fromJson(json, Token.class);
         this.username = token.getUsername();
@@ -25,7 +25,7 @@ public class Token {
         this.role = token.getRole();
     }
 
-    Token(String username, int userId, int role){
+    Token(String username, int userId, int role) {
         this.username = username;
         this.userId = userId;
         this.role = role;
@@ -48,7 +48,7 @@ public class Token {
         this.hashCode = hashCode;
     }
 
-   String asJson(){
+    String asJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
