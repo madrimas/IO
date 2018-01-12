@@ -1,12 +1,11 @@
 package com.spanishinquisition.functions;
 
-
 import usermanagement.User;
 import usermanagement.UserManagement;
 
 import java.util.List;
 
-public class Main{
+public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -14,11 +13,10 @@ public class Main{
         List<User> userList = ud.getUserList();
 
         System.out.println("Database:");
-        for(User user : userList) {
-            System.out.println(user.getUsername() +" "+ user.getPassword());
+        for (User user : userList) {
+            System.out.println(user.getUsername() + " " + user.getPassword());
         }
         System.out.println("\n");
-
 
         Auth auth = Auth.getInstance();
 
@@ -28,10 +26,9 @@ public class Main{
 
         System.out.println(token);
 
-        if(auth.authorize(token)) {
+        if (auth.authorize(token)) {
             System.out.println("Access granted!");
-        }
-        else
+        } else
             System.out.println("Access denied!");
 
 
@@ -39,17 +36,17 @@ public class Main{
         Thread.sleep(5000);
 
         System.out.println("Po spaniu");
-        if(auth.authorize(token)) {
+        if (auth.authorize(token)) {
             System.out.println("Access granted!");
-        }
-        else
+        } else
             System.out.println("Access denied!");
 
 
         System.out.println("\nTokens in cache:");
-        for (Token x: Auth.tokenList) {
+        for (Token x : Auth.tokenList) {
             System.out.println(x.asJson());
         }
+
     }
 
 }

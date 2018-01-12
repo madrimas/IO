@@ -7,9 +7,10 @@ import static com.spanishinquisition.functions.Auth.tokenList;
  */
 class TokenFactory {
 
-    TokenFactory(){}
+    TokenFactory() {
+    }
 
-    Token createToken(String username, int userId, int role){
+    Token createToken(String username, int userId, int role) {
         Token token = new Token(username, userId, role);
         tokenList.add(token);
         return token;

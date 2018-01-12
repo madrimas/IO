@@ -17,31 +17,31 @@ public class Auth implements IAuth {
 
     private static Auth auth;
 
-    private Auth(){
+    private Auth() {
         tokenList = getTokenList();
     }
 
-    List<Token> getTokenList(){
-        return tokenList;
-    }
-
-    void setTokenInList(Token token){
-        tokenList.add(token);
-    }
-
-    int setTokenGetId(Token token){
-        int id = tokenList.size();
-        tokenList.add(id, token);
-        return id;
-    }
-
     public static Auth getInstance() {
-        if(Auth.auth == null) {
+        if (Auth.auth == null) {
             auth = new Auth();
             return auth;
         }
 
         return auth;
+    }
+
+    List<Token> getTokenList() {
+        return tokenList;
+    }
+
+    void setTokenInList(Token token) {
+        tokenList.add(token);
+    }
+
+    int setTokenGetId(Token token) {
+        int id = tokenList.size();
+        tokenList.add(id, token);
+        return id;
     }
 
     Token getToken(int id) {
@@ -50,20 +50,20 @@ public class Auth implements IAuth {
 
 
     @Override
-     public String login(String username, String password){
+    public String login(String username, String password) {
         //first at all check if user is in database
         UserManagement ud = UserManagement.getInstance();
 
-        for(User user : ud.getUserList()) {
-            if(user.getUsername().equals(username)) {
+        for (User user : ud.getUserList()) {
+            if (user.getUsername().equals(username)) {
                 //then check password
                 HashFunction hf = Hashing.sha256();
                 HashCode hc = hf.newHasher()
                         .putString(password, Charsets.UTF_8)
                         .hash();
 
-                if(hc.toString().equals(user.getPassword())) {
-                //if(password.equals(user.getPassword())) {
+                if (hc.toString().equals(user.getPassword())) {
+                    //if(password.equals(user.getPassword())) {
                     //if all passes, making the token based on privileges of user
                     int id = user.getUserID();
                     int role = user.getPermissionLevel();
@@ -86,11 +86,11 @@ public class Auth implements IAuth {
 
 
     @Override
-    public boolean authorize(String token){
+    public boolean authorize(String token) {
         //check in cache if token is active
         //if it is, return true
 
-        for(Token tkn : Auth.tokenList) {
+        for (Token tkn : Auth.tokenList) {
             if (tkn.asJson().equals(token)) {
 
                 if (getDateDiff(tkn.getDate(), new Date()) < 3600) {
@@ -107,8 +107,7 @@ public class Auth implements IAuth {
         return false;
     }
 
-    private long getDateDiff(Date then, Date now){
-        long seconds = (now.getTime() - then.getTime())/1000;
-        return seconds;
+    private long getDateDiff(Date then, Date now) {
+        return (now.getTime() - then.getTime()) / 1000;
     }
 }
