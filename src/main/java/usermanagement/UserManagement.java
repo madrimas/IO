@@ -26,6 +26,10 @@ public class UserManagement {
         }
     }
 
+    /**
+     *
+     * @return instance of UserManagement
+     */
     public static UserManagement getInstance() {
         if (userManagement == null) {
             userManagement = new UserManagement();
@@ -33,6 +37,9 @@ public class UserManagement {
         return userManagement;
     }
 
+    /**
+     * Read users from file and saves it to userList
+     */
     private void readUserListFromBase() {
         try {
             FileInputStream fileIn = new FileInputStream(file);
@@ -45,6 +52,9 @@ public class UserManagement {
         }
     }
 
+    /**
+     * @return list of the users
+     */
     public List<User> getUserList() {
         return userList;
     }

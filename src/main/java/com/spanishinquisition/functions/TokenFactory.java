@@ -9,7 +9,13 @@ class TokenFactory {
 
     TokenFactory() {
     }
-
+    /**
+     * Create new token
+     * @param username name of the user
+     * @param userId ID of the user
+     * @param role role of the user
+     * @return token for the user
+     */
     Token createToken(String username, int userId, int role) {
         Token token = new Token(username, userId, role);
         tokenList.add(token);
