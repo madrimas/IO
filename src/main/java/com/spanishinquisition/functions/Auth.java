@@ -8,25 +8,44 @@ import usermanagement.User;
 import usermanagement.UserManagement;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-class Auth implements IAuth {
+public class Auth implements IAuth {
 
     static List<Token> tokenList = new ArrayList<>();
 
-    Auth(){
+    private static Auth auth;
+
+    /**
+     * fill token list
+     */
+    private Auth() {
         tokenList = getTokenList();
     }
 
-    List<Token> getTokenList(){
+    /**
+     * Creates 1 inscance of object
+     * @return object auth
+     */
+    public static Auth getInstance() {
+        if (Auth.auth == null) {
+            auth = new Auth();
+            return auth;
+        }
+
+        return auth;
+    }
+
+    List<Token> getTokenList() {
         return tokenList;
     }
 
-    void setTokenInList(Token token){
+    void setTokenInList(Token token) {
         tokenList.add(token);
     }
 
-    int setTokenGetId(Token token){
+    int setTokenGetId(Token token) {
         int id = tokenList.size();
         tokenList.add(id, token);
         return id;
@@ -35,23 +54,29 @@ class Auth implements IAuth {
     Token getToken(int id) {
         return tokenList.get(id);
     }
+
+    /**
+     * Login specific user using name and password
+     * @param username name of the user
+     * @param password password of the user
+     * @return null
+     */
     @Override
-     public String login(String username, String password){
+    public String login(String username, String password) {
         //first at all check if user is in database
         UserManagement ud = UserManagement.getInstance();
 
-        for(User user : ud.getUserList()) {
-            if(user.getUsername().equals(username)) {
+        for (User user : ud.getUserList()) {
+            if (user.getUsername().equals(username)) {
                 //then check password
-                System.out.println("User found");
                 HashFunction hf = Hashing.sha256();
                 HashCode hc = hf.newHasher()
                         .putString(password, Charsets.UTF_8)
                         .hash();
 
-//                if(hc.toString().equals(user.getPassword())) {
-                //if all passes, making the token based on privileges of user
-                if(password.equals(user.getPassword())) {
+                if (hc.toString().equals(user.getPassword())) {
+                    //if(password.equals(user.getPassword())) {
+                    //if all passes, making the token based on privileges of user
                     int id = user.getUserID();
                     int role = user.getPermissionLevel();
                     TokenFactory tokenFactory = new TokenFactory();
@@ -61,24 +86,50 @@ class Auth implements IAuth {
 
                 } else {
                     System.out.println("Incorrect password.");
-                    break;
+                    return null;
                 }
             }
         }
 
+        System.out.println("User not found.");
+
         return null;
     }
-    @Override
-  public boolean authorize(String token){
-        //check in cache if token is active
-        //if it is, return true
 
-        for(Token tkn : Auth.tokenList) {
+    /**
+     * Check in cache if token is active
+     * If it is, return true
+     * @param token token of the user
+     * @return true or false
+     */
+    @Override
+    public boolean authorize(String token) {
+
+
+        for (Token tkn : Auth.tokenList) {
             if (tkn.asJson().equals(token)) {
-                return true;
+
+                if (getDateDiff(tkn.getDate(), new Date()) < 3600) {
+
+                    return true;
+                } else {
+                    Auth.tokenList.remove(tkn);
+                    return false;
+                }
+
             }
         }
 
         return false;
+    }
+
+    /**
+     * Returning date difference
+     * @param then
+     * @param now
+     * @return difference
+     */
+    private long getDateDiff(Date then, Date now) {
+        return (now.getTime() - then.getTime()) / 1000;
     }
 }

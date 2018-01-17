@@ -13,8 +13,14 @@ class Token {
     private int userId;
     private int role;
     private String hashCode;
+    private transient Date date;
+    private transient long lifeSpan;
 
-    protected Token(String json){
+    /**
+     * Create token using json
+     * @param json
+     */
+    protected Token(String json) {
         Gson gson = new Gson();
         Token token = gson.fromJson(json, Token.class);
         this.username = token.getUsername();
@@ -23,11 +29,17 @@ class Token {
         this.role = token.getRole();
     }
 
-    Token(String username, int userId, int role){
+    /**
+     * Create token using sha256
+     * @param username name of the user
+     * @param userId ID of the user
+     * @param role role of the user
+     */
+    Token(String username, int userId, int role) {
         this.username = username;
         this.userId = userId;
         this.role = role;
-        Date date = new Date();
+        this.date = new Date();
         HashFunction hf = Hashing.sha256();
         HashCode hc = hf.newHasher()
                 .putInt(userId)
@@ -38,6 +50,10 @@ class Token {
         this.hashCode = hc.toString();
     }
 
+    /**
+     * Get Hash code
+     * @return hash code
+     */
     private String getHashCode() {
         return hashCode;
     }
@@ -46,7 +62,7 @@ class Token {
         this.hashCode = hashCode;
     }
 
-   String asJson(){
+    String asJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
@@ -73,5 +89,9 @@ class Token {
 
     protected void setRole(int role) {
         this.role = role;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

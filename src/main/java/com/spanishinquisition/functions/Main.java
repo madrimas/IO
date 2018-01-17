@@ -1,29 +1,49 @@
 package com.spanishinquisition.functions;
 
+import usermanagement.User;
+import usermanagement.UserManagement;
 
-public class Main{
+import java.util.List;
 
-    public static void main(String[] args) {
+public class Main {
 
-       // IAuth iAuth = new IAuth() {};
-        Auth auth = new Auth();
+    public static void main(String[] args) throws InterruptedException {
 
+        UserManagement ud = UserManagement.getInstance();
+        List<User> userList = ud.getUserList();
 
-       //String token = auth.login("root", "password");
-       // System.out.println(token);
+        System.out.println("Database:");
+        for (User user : userList) {
+            System.out.println(user.getUsername() + " " + user.getPassword());
+        }
+        System.out.println("\n");
+
+        Auth auth = Auth.getInstance();
 
         String token = auth.login("user1", "password");
+
+        System.out.println("Przed spaniem");
+
         System.out.println(token);
 
-
-        if(auth.authorize(token)) {
+        if (auth.authorize(token)) {
             System.out.println("Access granted!");
-        }
-        else
+        } else
             System.out.println("Access denied!");
 
 
-        for (Token x: Auth.tokenList) {
+        System.out.println("Spanie 5s");
+        Thread.sleep(5000);
+
+        System.out.println("Po spaniu");
+        if (auth.authorize(token)) {
+            System.out.println("Access granted!");
+        } else
+            System.out.println("Access denied!");
+
+
+        System.out.println("\nTokens in cache:");
+        for (Token x : Auth.tokenList) {
             System.out.println(x.asJson());
         }
 
