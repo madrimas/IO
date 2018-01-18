@@ -17,10 +17,17 @@ public class Auth implements IAuth {
 
     private static Auth auth;
 
+    /**
+     * fill token list
+     */
     private Auth() {
         tokenList = getTokenList();
     }
 
+    /**
+     * Creates 1 inscance of object
+     * @return object auth
+     */
     public static Auth getInstance() {
         if (Auth.auth == null) {
             auth = new Auth();
@@ -48,7 +55,12 @@ public class Auth implements IAuth {
         return tokenList.get(id);
     }
 
-
+    /**
+     * Login specific user using name and password
+     * @param username name of the user
+     * @param password password of the user
+     * @return null
+     */
     @Override
     public String login(String username, String password) {
         //first at all check if user is in database
@@ -84,11 +96,15 @@ public class Auth implements IAuth {
         return null;
     }
 
-
+    /**
+     * Check in cache if token is active
+     * If it is, return true
+     * @param token token of the user
+     * @return true or false
+     */
     @Override
     public boolean authorize(String token) {
-        //check in cache if token is active
-        //if it is, return true
+
 
         for (Token tkn : Auth.tokenList) {
             if (tkn.asJson().equals(token)) {
@@ -107,6 +123,12 @@ public class Auth implements IAuth {
         return false;
     }
 
+    /**
+     * Returning date difference
+     * @param then
+     * @param now
+     * @return difference
+     */
     private long getDateDiff(Date then, Date now) {
         return (now.getTime() - then.getTime()) / 1000;
     }

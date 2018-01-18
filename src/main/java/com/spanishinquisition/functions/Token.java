@@ -16,6 +16,10 @@ class Token {
     private transient Date date;
     private transient long lifeSpan;
 
+    /**
+     * Create token using json
+     * @param json
+     */
     protected Token(String json) {
         Gson gson = new Gson();
         Token token = gson.fromJson(json, Token.class);
@@ -25,6 +29,12 @@ class Token {
         this.role = token.getRole();
     }
 
+    /**
+     * Create token using sha256
+     * @param username name of the user
+     * @param userId ID of the user
+     * @param role role of the user
+     */
     Token(String username, int userId, int role) {
         this.username = username;
         this.userId = userId;
@@ -40,6 +50,10 @@ class Token {
         this.hashCode = hc.toString();
     }
 
+    /**
+     * Get Hash code
+     * @return hash code
+     */
     private String getHashCode() {
         return hashCode;
     }
