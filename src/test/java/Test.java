@@ -1,5 +1,9 @@
 import com.spanishinquisition.functions.Auth;
+import org.junit.AfterClass;
 import org.junit.Assert;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * Created by Wienio on 2018-01-15.
@@ -7,14 +11,65 @@ import org.junit.Assert;
 
 public class Test {
 
-    Auth auth = Auth.getInstance();
+    private static Auth auth = Auth.getInstance();
 
+    /**
+     * Test if access for user1 has passed correctly, then
+     * change user access token and test should fail
+     */
     @org.junit.Test
     public void testAccess() {
         String token = auth.login("user1", "password");
         Assert.assertEquals(true, auth.authorize(token));
-        token += "random";
+        token += "random_word";
         Assert.assertEquals(false, auth.authorize(token));
+    }
+
+    /**
+     * Test if user1 can login, return String with user data and random hashcode
+     */
+    @org.junit.Test
+    public void testCorrectLogin() {
+        Assert.assertNotNull(auth.login("user1", "password"));
+    }
+
+    /**
+     * Test if wrong_user with incorrect password can pass login, should return null
+     * (opposite of correct login) so no user data
+     */
+    @org.junit.Test
+    public void testIncorrectLogin() {
+        Assert.assertNull(auth.login("wrong_user", "wrong_password"));
+    }
+
+    /**
+     * Check if tokenList isn't empty after login, size after tests should equals 2
+     */
+    @AfterClass
+    public static void checkTokenList() {
+        try {
+            Field field = auth.getClass().getDeclaredField("tokenList");
+            field.setAccessible(true);
+            Object value = field.get(auth);
+            List<Object> list = cast(value);
+            Assert.assertEquals(false, list.isEmpty());
+            Assert.assertEquals(2, list.size());
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Helpful method for testing if tokens are on token list
+     * @param obj our object to cast to list
+     * @param <T> any type for cast
+     * @return list of object T
+     */
+    @SuppressWarnings("unchecked")
+    public static <T extends List<?>> T cast(Object obj) {
+        return (T) obj;
     }
 
 }
