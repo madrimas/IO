@@ -2,7 +2,9 @@ import com.spanishinquisition.functions.Auth;
 import org.junit.AfterClass;
 import org.junit.Assert;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -43,7 +45,25 @@ public class Test {
     }
 
     /**
-     * Check if tokenList isn't empty after login, size after tests should equals 2.
+     * Check whether Token constructor won't pass for any random text
+     * wrongToken constructor will throw exception
+     */
+    @org.junit.Test
+    public void test() {
+        try {
+            Class clazz = Class.forName("com.spanishinquisition.functions.Token");
+            Constructor constructor = clazz.getDeclaredConstructor(String.class);
+            constructor.setAccessible(true);
+            Object goodToken = constructor.newInstance(auth.login("user1", "password"));
+            Assert.assertNotNull(goodToken);
+            Object wrongToken = constructor.newInstance("random_text");
+        } catch (Exception e) {
+            Assert.assertEquals(InvocationTargetException.class, e.getClass());
+        }
+    }
+
+    /**
+     * Check if tokenList isn't empty after login, size after all tests should equals 3.
      */
     @AfterClass
     public static void checkTokenList() {
@@ -53,7 +73,7 @@ public class Test {
             Object value = field.get(auth);
             List<Object> list = cast(value);
             Assert.assertEquals(false, list.isEmpty());
-            Assert.assertEquals(2, list.size());
+            Assert.assertEquals(3, list.size());
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
