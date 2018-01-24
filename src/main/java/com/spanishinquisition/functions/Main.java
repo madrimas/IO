@@ -6,8 +6,9 @@ import usermanagement.UserManagement;
 import java.util.List;
 
 public class Main {
+
     /**
-     * Only for testing.
+     * Only for presenting module in action.
      *
      * @param args
      * @throws InterruptedException
