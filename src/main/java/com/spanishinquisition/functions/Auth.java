@@ -105,7 +105,7 @@ public class Auth implements IAuth {
                     TokenFactory tokenFactory = new TokenFactory();
                     Token token = tokenFactory.createToken(username, id, role);
 
-                    // If everything is ok.
+                    // If everything is ok return valid token as JSON String.
                     return token.asJson();
 
                 } else {
