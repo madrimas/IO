@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"com.spanishinquisition.functions","l":"Auth"},{"p":"com.spanishinquisition.functions","l":"IAuth"},{"p":"com.spanishinquisition.functions","l":"Main"},{"p":"usermanagement","l":"User"},{"p":"usermanagement","l":"UserManagement"}]
+typeSearchIndex = [{"p":"com.spanishinquisition.functions","l":"Auth"},{"p":"com.spanishinquisition.functions","l":"IAuth"},{"p":"com.spanishinquisition.functions","l":"Main"},{"p":"<Unnamed>","l":"Test"},{"p":"usermanagement","l":"User"},{"p":"usermanagement","l":"UserManagement"}]
