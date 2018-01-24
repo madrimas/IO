@@ -49,7 +49,7 @@ public class Test {
      * wrongToken constructor will throw exception
      */
     @org.junit.Test
-    public void test() {
+    public void testConstructor() {
         try {
             Class clazz = Class.forName("com.spanishinquisition.functions.Token");
             Constructor constructor = clazz.getDeclaredConstructor(String.class);
