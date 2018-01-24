@@ -79,6 +79,7 @@ public class Auth implements IAuth {
 
     /**
      * Login specified user with username and password.
+     * Uses sha256 hash function for a passwords comparision.
      *
      * @param username name of the user
      * @param password password of the user
