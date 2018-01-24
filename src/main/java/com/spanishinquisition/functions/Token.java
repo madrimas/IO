@@ -8,6 +8,10 @@ import com.google.gson.Gson;
 
 import java.util.Date;
 
+/**
+ * Hashing based on tutorial in documentatnion : https://github.com/google/guava/wiki/HashingExplained
+ * Gson documentation : https://sites.google.com/site/gson/gson-user-guide
+ */
 class Token {
     private String username;
     private int userId;

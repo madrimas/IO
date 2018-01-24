@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Class based on singleton design pattern.
+ *
+ * Hashing based on tutorial in documentatnion : https://github.com/google/guava/wiki/HashingExplained
+ *Singleton : http://www.modfem.agh.edu.pl/attachments/article/40/IO_05_2_Wzorce_projektowe.pdf
+ */
 public class Auth implements IAuth {
 
     static List<Token> tokenList = new ArrayList<>();
