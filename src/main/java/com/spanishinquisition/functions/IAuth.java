@@ -5,15 +5,17 @@ package com.spanishinquisition.functions;
  */
 public interface IAuth {
     /**
+     * Login specified user with username and password.
      *
      * @param username name of the new user
      * @param password password of the new user
-     * @return null
+     * @return token as JSON (String) on success, null otherwise
      */
     String login(String username, String password);
 
     /**
-     * Token authorizatiom
+     * Token authorization based on current memory content.
+     *
      * @param token token of user
      * @return true or false
      */

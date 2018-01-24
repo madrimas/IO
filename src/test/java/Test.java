@@ -15,7 +15,7 @@ public class Test {
 
     /**
      * Test if access for user1 has passed correctly, then
-     * change user access token and test should fail
+     * change user access token, which should cause a test failure.
      */
     @org.junit.Test
     public void testAccess() {
@@ -26,7 +26,7 @@ public class Test {
     }
 
     /**
-     * Test if user1 can login, return String with user data and random hashcode
+     * Test if login of user1 returns valid Token object (not Null).
      */
     @org.junit.Test
     public void testCorrectLogin() {
@@ -34,8 +34,8 @@ public class Test {
     }
 
     /**
-     * Test if wrong_user with incorrect password can pass login, should return null
-     * (opposite of correct login) so no user data
+     * Test if wrong_user with incorrect password can pass login. This should return null
+     * (opposite of correct login), not Token.
      */
     @org.junit.Test
     public void testIncorrectLogin() {
@@ -43,7 +43,7 @@ public class Test {
     }
 
     /**
-     * Check if tokenList isn't empty after login, size after tests should equals 2
+     * Check if tokenList isn't empty after login, size after tests should equals 2.
      */
     @AfterClass
     public static void checkTokenList() {
@@ -62,7 +62,8 @@ public class Test {
     }
 
     /**
-     * Helpful method for testing if tokens are on token list
+     * Helpful method for testing if tokens are on token list.
+     *
      * @param obj our object to cast to list
      * @param <T> any type for cast
      * @return list of object T

@@ -16,6 +16,11 @@ public class UserManagement {
     private List<User> userList;
     private File file = new File("userBase.xd");
 
+    /**
+     * Private constructor for a single instance of
+     * this class. Initializes empty userList and
+     * triggers reading from the database.
+     */
     private UserManagement() {
         userList = new ArrayList<>();
 
@@ -38,7 +43,8 @@ public class UserManagement {
     }
 
     /**
-     * Read users from file and saves it to userList
+     * Initializes userList array with users read from the database
+     * file.
      */
     private void readUserListFromBase() {
         try {

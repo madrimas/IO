@@ -13,7 +13,8 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * Create a new user
+     * Initializes a new user.
+     *
      * @param username name of the user
      * @param permissionLevel permission level
      * @param ID user ID
@@ -36,7 +37,7 @@ public class User implements Serializable {
 
     /**
      *
-     * @return username name of the user
+     * @return username of the user
      */
     public String getUsername() {
         return username;
@@ -44,19 +45,24 @@ public class User implements Serializable {
 
     /**
      *
-     * @return password password of the user
+     * @return password of the user
      */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets password of the user.
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
      *
-     * @return permission permision level of the user
+     * @return permission level of the user
      */
     public int getPermissionLevel() {
         return permissionLevel;

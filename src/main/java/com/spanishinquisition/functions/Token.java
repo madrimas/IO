@@ -17,8 +17,10 @@ class Token {
     private transient long lifeSpan;
 
     /**
-     * Create token using json
-     * @param json
+     * Unmarshals JSON String into temporary Token object
+     * and copies its attributes to the current instance.
+     *
+     * @param json marshaled token object
      */
     protected Token(String json) {
         Gson gson = new Gson();
@@ -30,7 +32,10 @@ class Token {
     }
 
     /**
-     * Create token using sha256
+     * Creates a token with username, user id and role, then
+     * generates hashcode based on these attributes and timestamp
+     * using sha256 hash function.
+     *
      * @param username name of the user
      * @param userId ID of the user
      * @param role role of the user
@@ -51,17 +56,26 @@ class Token {
     }
 
     /**
-     * Get Hash code
      * @return hash code
      */
     private String getHashCode() {
         return hashCode;
     }
 
+    /**
+     * Sets hashcode.
+     *
+     * @param hashCode
+     */
     private void setHashCode(String hashCode) {
         this.hashCode = hashCode;
     }
 
+    /**
+     * Marshals token object into JSON String.
+     *
+     * @return JSON String
+     */
     String asJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
