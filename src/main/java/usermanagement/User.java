@@ -13,7 +13,8 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * Initializes a new user.
+     * Initializes a new user with specified attributes.
+     * Also sets a placeholder password.
      *
      * @param username name of the user
      * @param permissionLevel permission level

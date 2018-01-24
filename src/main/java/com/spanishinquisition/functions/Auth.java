@@ -122,7 +122,8 @@ public class Auth implements IAuth {
 
     /**
      * Checks in the memory if the token is active. Removes token from tokenList
-     * if it is older than specified time and returns false. Otherwise returns true.
+     * if it is older than specified time and returns false (Token is out-of-date).
+     * Otherwise returns true.
      *
      * @param token token of the user
      * @return true if token is active, false otherwise
