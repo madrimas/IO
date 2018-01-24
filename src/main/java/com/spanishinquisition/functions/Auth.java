@@ -136,6 +136,7 @@ public class Auth implements IAuth {
         for (Token tkn : Auth.tokenList) {
             if (tkn.asJson().equals(token)) {
 
+                // Check if token is not out-of-date.
                 if (getDateDiff(tkn.getDate(), new Date()) < 3600) {
                     return true;
 
