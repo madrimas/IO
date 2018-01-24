@@ -32,6 +32,7 @@ public class Main {
 
         System.out.println("Przed spaniem");
 
+        // Print the token.
         System.out.println(token);
 
         // Try to authorize with the token.
