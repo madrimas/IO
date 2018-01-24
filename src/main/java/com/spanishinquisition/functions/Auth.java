@@ -49,35 +49,6 @@ public class Auth implements IAuth {
     }
 
     /**
-     * Appends the tokenList with a token.
-     *
-     * @param token
-     */
-    void setTokenInList(Token token) {
-        tokenList.add(token);
-    }
-
-    /**
-     * Appends the tokenList with a token, returns its id.
-     *
-     * @param token
-     * @return index (id) of the token in tokenList
-     */
-    int setTokenGetId(Token token) {
-        int id = tokenList.size();
-        tokenList.add(id, token);
-        return id;
-    }
-
-    /**
-     * @param id index of the token
-     * @return token of specified index (id)
-     */
-    Token getToken(int id) {
-        return tokenList.get(id);
-    }
-
-    /**
      * Login specified user with username and password.
      * Uses sha256 hash function for a passwords comparision.
      *

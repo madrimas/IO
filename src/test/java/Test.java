@@ -66,7 +66,7 @@ public class Test {
      * Check if tokenList isn't empty after login, size after all tests should equals 3.
      */
     @AfterClass
-    public static void checkTokenList() {
+    public static void checkTokenLisst() {
         try {
             Field field = auth.getClass().getDeclaredField("tokenList");
             field.setAccessible(true);

@@ -14,7 +14,6 @@ class Token {
     private int role;
     private String hashCode;
     private transient Date date;
-    private transient long lifeSpan;
 
     /**
      * Unmarshals JSON String into temporary Token object
@@ -62,14 +61,6 @@ class Token {
         return hashCode;
     }
 
-    /**
-     * Sets hashcode.
-     *
-     * @param hashCode
-     */
-    private void setHashCode(String hashCode) {
-        this.hashCode = hashCode;
-    }
 
     /**
      * Marshals token object into JSON String.
@@ -90,15 +81,6 @@ class Token {
     }
 
     /**
-     * Sets username in the token.
-     *
-     * @param username
-     */
-    private void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
      *
      * @return user identifier from the token
      */
@@ -107,29 +89,11 @@ class Token {
     }
 
     /**
-     * Sets user identifier in the token.
-     *
-     * @param userId
-     */
-    private void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    /**
      *
      * @return user role from the token.
      */
     private int getRole() {
         return role;
-    }
-
-    /**
-     * Sets user role in the token.
-     *
-     * @param role
-     */
-    protected void setRole(int role) {
-        this.role = role;
     }
 
     /**
