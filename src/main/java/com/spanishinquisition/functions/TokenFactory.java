@@ -10,8 +10,8 @@ class TokenFactory {
     TokenFactory() {
     }
     /**
-     * Creates a new token and appends it to
-     * the static tokenList.
+     * Creates a new token with specified attributes
+     * and appends it to the static tokenList.
      *
      * @param username name of the user
      * @param userId ID of the user
