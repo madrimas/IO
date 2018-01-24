@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Maven Project based on : https://maven.apache.org/
+ * All project structure based on Factory method pattern : Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison Wesley. pp. 107ff. ISBN 0-201-63361-2 s. 121-132
  */
 public class Main {
 
