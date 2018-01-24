@@ -59,6 +59,7 @@ public class UserManagement {
     }
 
     /**
+     *
      * @return list of the users
      */
     public List<User> getUserList() {

@@ -81,30 +81,61 @@ class Token {
         return gson.toJson(this);
     }
 
+    /**
+     *
+     * @return username from the token
+     */
     private String getUsername() {
         return username;
     }
 
+    /**
+     * Sets username in the token.
+     *
+     * @param username
+     */
     private void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return user identifier from the token
+     */
     private int getUserId() {
         return userId;
     }
 
+    /**
+     * Sets user identifier in the token.
+     *
+     * @param userId
+     */
     private void setUserId(int userId) {
         this.userId = userId;
     }
 
+    /**
+     *
+     * @return user role from the token.
+     */
     private int getRole() {
         return role;
     }
 
+    /**
+     * Sets user role in the token.
+     *
+     * @param role
+     */
     protected void setRole(int role) {
         this.role = role;
     }
 
+    /**
+     *
+     * @return creation timestamp from the token.
+     */
     public Date getDate() {
         return date;
     }

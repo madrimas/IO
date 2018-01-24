@@ -41,6 +41,7 @@ public class Auth implements IAuth {
     }
 
     /**
+     *
      * @return static list of active tokens.
      */
     List<Token> getTokenList() {
@@ -89,6 +90,7 @@ public class Auth implements IAuth {
         UserManagement ud = UserManagement.getInstance();
 
         for (User user : ud.getUserList()) {
+
             if (user.getUsername().equals(username)) {
                 // Then check the password
                 HashFunction hf = Hashing.sha256();
@@ -103,6 +105,7 @@ public class Auth implements IAuth {
                     TokenFactory tokenFactory = new TokenFactory();
                     Token token = tokenFactory.createToken(username, id, role);
 
+                    // If everything is ok.
                     return token.asJson();
 
                 } else {
@@ -110,6 +113,7 @@ public class Auth implements IAuth {
                     return null;
                 }
             }
+
         }
 
         // User not found.
@@ -135,6 +139,7 @@ public class Auth implements IAuth {
 
                 } else {
                     Auth.tokenList.remove(tkn);
+
                     return false;
                 }
 
