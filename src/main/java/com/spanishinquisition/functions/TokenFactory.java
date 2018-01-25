@@ -3,7 +3,9 @@ package com.spanishinquisition.functions;
 import static com.spanishinquisition.functions.Auth.tokenList;
 
 /**
- * Created by madrimas on 13.12.2017.
+ * Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994)
+ * Design Patterns: Elements of Reusable Object-Oriented Software
+ * Addison Wesley pp 107ff ISBN 0-201-63361-2 s 121-132
  */
 class TokenFactory {
 
